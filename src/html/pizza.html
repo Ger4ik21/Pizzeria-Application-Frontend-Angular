@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Пицца</title>
+    <link rel="shortcut icon" href="../images/icon.png" />
+    <link rel="stylesheet" href="../css/styles-pizza.css" />
+</head>
+<body>
+    <header class="site-header">
+        <div class="site-identity">
+          <h1><a href="#">Pizzeria</a></h1>
+          <img src="../images/icon.png" height="40" width="40" />
+        </div>
+        <nav class="site-navigation">
+          <ul class="nav">
+            <li><a href="#">Профиль</a></li>
+            <li><a href="#">Корзина</a></li>
+          </ul>
+        </nav>
+      </header>
+    <div class="container">
+        <img src="../images/margaritta.jpg" alt="Пицца" class="pizza-img">
+        <div class="price">Цена: 25 руб</div>
+        <div class="size-selection">
+            <h2>Выберите размер</h2>
+            <label>
+                <input type="radio" name="size" value="small"> Малая
+            </label>
+            <label>
+                <input type="radio" name="size" value="medium"> Средняя
+            </label>
+            <label>
+                <input type="radio" name="size" value="large"> Большая
+            </label>
+        </div>
+        <button class="btn-add">Добавить в корзину</button>
+    </div>
+</body>
+</html>
