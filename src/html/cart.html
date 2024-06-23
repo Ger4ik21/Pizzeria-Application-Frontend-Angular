@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <link rel="shortcut icon" href="../images/icon.png" />
+    <link rel="stylesheet" href="../css/styles-cart.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../scripts/scripts.js"></script>
+</head>
+<body>
+    <div id="header"></div>
+    <div class="cartcontainer">
+        <h1>Корзина заказа</h1>
+        
+        <!-- Список выбранных пицц -->
+        <div class="cart-item">
+                <img class="pazza-img-cart" src="../images/margaritta.jpg" alt="Пицца Маргарита">
+                <div class="cart-pizza-name">
+                    <h2>Маргарита</h2>
+                    <div class="size-cart">Средняя</div>
+                    <div class="priсe-cart">20 руб</div>
+                </div>
+        </div>
+        <div class="cart-item">
+            <img class="pazza-img-cart" src="../images/margaritta.jpg" alt="Пицца Маргарита">
+            <div class="cart-pizza-name">
+                <h2>Маргарита</h2>
+                <div class="size-cart">Большая</div>
+                <div class="priсe-cart">25 руб</div>
+            </div>
+    </div>
+        
+        <!-- Итоговая сумма -->
+        <div class="total">
+            <p>Итого: 45 руб</p>
+        </div>
+        
+        <!-- Форма для ввода данных -->
+        <form class="orderform" action="/submit-order" method="post">
+                       
+            <button class="orderbtn" type="submit">Заказать</button>
+        </form>
+    </div>
+</body>
+</html>
