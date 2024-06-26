@@ -9,18 +9,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-<header class="site-header">
-    <div class="site-identity">
-        <h1><a href="pizza.html">Pizzeria</a></h1>
-        <img src="../assets/images/icon.png" height="40" width="40" />
-    </div>
-    <nav class="site-navigation">
-        <ul class="nav">
-            <li><a href="profile.html">Профиль</a></li>
-            <li><a href="cart.html">Корзина</a></li>
-        </ul>
-    </nav>
-</header>
+<app-header></app-header>
 <div class="container mt-5">
     <div class="row">
         <div class="col-md-4 offset-md-4">
@@ -38,7 +27,7 @@
                         <tbody>
                         <tr>
                             <td class="left-col" rowspan="2">
-                                <img src="../assets/images/user.png" alt="" title="" width="150" height="150"></td>
+                                <img src="../../../assets/images/user.png" alt="" title="" width="150" height="150"></td>
                             <td class="right-col">
                                 <button class="btn btn-primary" id="edit-photo-btn">Изменить фото</button>
                             </td>
@@ -67,6 +56,7 @@
                             <label for="togglePassword">Показать пароль</label>
                         </li>
                         <button class="btn btn-primary mt-3" id="edit-profile-btn">Редактировать профиль</button>
+                        <button class="btn btn-danger mt-3" id="exit-profile-btn">Выход</button>
                     </ul>
                 </div>
             </div>
