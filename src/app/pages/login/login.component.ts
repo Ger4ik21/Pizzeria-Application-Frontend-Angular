@@ -1,6 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
 import {Authentication} from "../../data/intefaces/authentication.interface";
+import {User} from "../../data/intefaces/user.interface";
 
 @Component({
   selector: 'app-login',
@@ -14,12 +15,13 @@ import {Authentication} from "../../data/intefaces/authentication.interface";
 })
 export class LoginComponent {
 
+  user!: User;
+
   form = new FormGroup({
     email: new FormControl(null,[Validators.required,Validators.email,Validators.maxLength(30)]),
     password: new FormControl(null,[Validators.required, Validators.minLength(6)]),
   })
 
-  @Input() authentication!: Authentication;
 
   onSubmit(){
     if(this.form.valid) {

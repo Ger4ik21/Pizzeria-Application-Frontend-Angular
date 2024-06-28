@@ -9,5 +9,4 @@ export interface User{
     gender: string
     birthDate: Date
     role: Role
-
 }
