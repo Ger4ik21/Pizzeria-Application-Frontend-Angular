@@ -20,7 +20,7 @@ export class RegisterComponent {
   registerForm = new FormGroup({
     firstName: new FormControl(null, [Validators.required, Validators.minLength(3)]),
     lastName: new FormControl(null, [Validators.required, Validators.minLength(3)]),
-    email: new FormControl(null, [Validators.required, Validators.email, Validators.maxLength(30)]),
+    email: new FormControl(null, [Validators.required, Validators.email, Validators.maxLength(50)]),
     password: new FormControl(null, [Validators.required, Validators.minLength(6)]),
     gender: new FormControl(null, [Validators.required]),
     birthDate: new FormControl(null, [Validators.required]),

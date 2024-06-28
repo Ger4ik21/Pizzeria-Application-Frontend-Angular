@@ -21,18 +21,23 @@
             <input formControlName="email"
                    type="email"
                    id="email"
-                   class="form-control" >
-            <label class="form-label" for="email" style="margin-left: 0px;">Адрес почты</label>
+                   class="form-control"
+                   placeholder="Адрес почты">
+            <label *ngIf="form.controls['email'].invalid && form.controls['email'].touched"
+                    class="form-label" style="margin-left: 10px;color: red">Некорректаная почта</label>
             <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 88.8px;"></div><div class="form-notch-trailing"></div></div></div>
 
         <!-- Password input -->
         <div data-mdb-input-init="" class="form-outline mb-4" data-mdb-input-initialized="true">
             <input formControlName="password"
-                    type="password" id="form2Example2" class="form-control">
-            <label class="form-label" for="form2Example2" style="margin-left: 0px;">Пароль</label>
+                   type="password"
+                   id="form2Example2"
+                   class="form-control"
+                   placeholder="Пароль">
+            <label *ngIf="form.controls['password'].invalid && form.controls['password'].touched"
+                   class="form-label" style="margin-left: 10px;color: red">Короткий пароль</label>
             <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div>
                 <div class="form-notch-middle" style="width: 64.8px;">
-
                 </div><div class="form-notch-trailing"></div></div></div>
 
         <!-- 2 column grid layout for inline styling -->
