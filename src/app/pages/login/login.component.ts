@@ -18,6 +18,7 @@ import {NgIf} from "@angular/common";
 export class LoginComponent {
 
   authentication!: Authentication;
+  showPass!: boolean
 
   form = new FormGroup({
     email: new FormControl(null,[Validators.required,Validators.email,Validators.maxLength(50)]),

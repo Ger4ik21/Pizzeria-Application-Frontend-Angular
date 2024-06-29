@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {User} from "../../data/intefaces/user.interface";
-import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
+import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
 import {CommonModule} from "@angular/common";
 
 @Component({
@@ -8,7 +8,8 @@ import {CommonModule} from "@angular/common";
   standalone: true,
   imports: [
     ReactiveFormsModule,
-      CommonModule
+    CommonModule,
+    FormsModule
   ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
@@ -16,6 +17,8 @@ import {CommonModule} from "@angular/common";
 export class RegisterComponent {
 
   user!: User;
+
+  showPass!: boolean
 
   registerForm = new FormGroup({
     firstName: new FormControl(null, [Validators.required, Validators.minLength(3)]),
@@ -27,15 +30,16 @@ export class RegisterComponent {
   })
 
   register() {
-    if(this.registerForm.valid) {
+    if (this.registerForm.valid) {
       //@ts-ignore
       this.user = this.registerForm.value
       console.log(this.user)
       alert("Форма успешно заполнена :D");
-    }else{
+    } else {
       alert("Форма регистрации заполнена некорректно(");
       console.log(this.registerForm.value);
     }
   }
 }
+
 

@@ -29,3 +29,12 @@ a {
     text-decoration: none;
     color: #000;
 }
+table{
+    text-align: center;
+    margin: 0 auto;
+}
+
+.table-wrapper{
+    display: flex;
+    justify-content: center;
+}

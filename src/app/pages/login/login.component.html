@@ -33,7 +33,15 @@
                    type="password"
                    id="form2Example2"
                    class="form-control"
-                   placeholder="Пароль">
+                   placeholder="Пароль"
+                   [type] = "showPass ? 'text' : 'password'">
+            <input
+                    type="checkbox"
+                    [(ngModel)]="showPass"
+                    [ngModelOptions]="{standalone: true}"
+                    id="togglePassword"
+                    class="form-check-input">
+            <label for="togglePassword" >Показать пароль</label>
             <label *ngIf="form.controls['password'].invalid && form.controls['password'].touched"
                    class="form-label" style="margin-left: 10px;color: red">Короткий пароль</label>
             <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div>

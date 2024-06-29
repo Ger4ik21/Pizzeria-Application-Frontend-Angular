@@ -86,9 +86,21 @@
                             <div class="col-md-6 mb-4 pb-2">
 
                                 <div data-mdb-input-init="" class="form-outline" data-mdb-input-initialized="true">
-                                    <input formControlName="password" type="password" id="password" class="form-control form-control-lg" placeholder="Пароль">
+                                    <input
+                                            formControlName="password"
+                                            id="password"
+                                            class="form-control form-control-lg"
+                                            placeholder="Пароль"
+                                            [type] = "showPass ? 'text' : 'password'">
+                                    <input
+                                            type="checkbox"
+                                            [(ngModel)]="showPass"
+                                            [ngModelOptions]="{standalone: true}"
+                                            id="togglePassword"
+                                            class="form-check-input">
+                                    <label for="togglePassword" >Показать пароль</label>
                                     <label *ngIf="registerForm.controls['password'].invalid && registerForm.controls['password'].touched"
-                                            class="form-label" for="password" style="margin-left: 10px; color: red">Минимум 6 символов</label>
+                                           class="form-label" for="password" style="margin-left: 10px; color: red">Минимум 6 символов</label>
                                     <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 92.8px;"></div><div class="form-notch-trailing"></div></div></div>
 
                             </div>
