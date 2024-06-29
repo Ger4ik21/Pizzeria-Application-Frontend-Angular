@@ -10,8 +10,10 @@
 </head>
 <body>
 <app-header></app-header>
-<app-pizza-card></app-pizza-card>
-<app-pizza-card></app-pizza-card>
-<app-pizza-card></app-pizza-card>
+@for(product of products; track product.id){
+<app-pizza-card
+        [product]="product"
+></app-pizza-card>
+}
 </body>
 </html>

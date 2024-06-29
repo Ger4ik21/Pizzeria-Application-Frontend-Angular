@@ -1,22 +1,15 @@
 <head>
     <meta charset="UTF-8">
 </head>
+@if(product){
 <div class="container">
-    <img src="../../../assets/images/margaritta.jpg" alt="Пицца" class="pizza-img">
-    <div class="price">Цена: 25 руб</div>
+    <img src="../../../assets/images/{{product.name}}.png" alt="Пицца" class="pizza-img">
+    <div class="price">Цена: {{product.price}} руб</div>
     <div class="size-selection">
-        <h2>Выберите размер</h2>
-        <label>
-            <input type="radio" name="size" value="small"> Малая
-        </label>
-        <label>
-            <input type="radio" name="size" value="medium"> Средняя
-        </label>
-        <label>
-            <input type="radio" name="size" value="large"> Большая
-        </label>
+        <h2>Категория: {{product.category.name}}</h2>
     </div>
-    <div>Описание пиццы: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec semper neque. Fusce laoreet malesuada orci, quis pellentesque sapien tincidunt sed. Duis sed felis euismod, scelerisque arcu quis, finibus nisl. Integer ultrices quam sed dui fringilla, at auctor lectus finibus. Donec auctor, mi id pulvinar eleifend, velit lacus vulputate urna, a ullamcorper ipsum nisl in leo.</div>
+    <div>Описание пиццы: {{product.description}}</div>
     <br><br>
     <button class="btn-add">Добавить в корзину</button>
 </div>
+}
