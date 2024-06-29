@@ -5,6 +5,7 @@
     <title>Панель управления пиццерией</title>
     <link rel="stylesheet" href="admin.component.css" />
     <link rel="shortcut icon" href="/src/assets/images/icon.png" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 <app-header></app-header>
@@ -13,7 +14,7 @@
     <a href="p" class="home-link">На главную</a>
 </div>
 <main>
-    <section id="products">
+    <section id="products" class="w-100 px-4 py-5 gradient-custom" style="border-radius: .5rem .5rem 0 0;">
         <h1>Продукты</h1>
         <button id="add-product-button" style="margin-left: 10px">Добавить продукт</button>
         <br><br>
@@ -43,9 +44,24 @@
             </tbody>
         </table>
     </section>
-    <section id="categories">
+    <section id="categories" class="w-100 px-4 py-5 gradient-custom" style="border-radius: .5rem .5rem 0 0;">
         <h1>Категории</h1>
-        <button id="add-category-button" style="margin-left: 10px">Добавить категорию</button>
+        <form
+        [formGroup]="categoryForm"
+        (ngSubmit)="addNewCategory()">
+        <div class="form-outline form-outline-ng" data-mdb-input-initialized="true">
+            <input formControlName="category" type="text"
+                   class="category-input"
+                   placeholder="Новая категория">
+            @if (categoryForm.controls.category.invalid && categoryForm.controls.category.touched){
+            <label class="form-label"
+                   style="margin-left: 10px; color: red">Минимум 3 символа</label>
+            }
+            <div class="form-notch-leading" style="width: 9px;"></div>
+            <br>
+        </div>
+        <button id="add-category-button" style="margin-left: 10px" (click)="addNewCategory()">Добавить категорию</button>
+        </form>
         <br><br>
         <table id="categories-table">
             <thead>
@@ -65,7 +81,7 @@
             </tbody>
         </table>
     </section>
-    <section id="orders">
+    <section id="orders" class="w-100 px-4 py-5 gradient-custom" style="border-radius: .5rem .5rem 0 0;">
         <h1>Заказы</h1>
         <button id="add-order-button" style="margin-left: 10px">Добавить заказ</button>
         <br><br>

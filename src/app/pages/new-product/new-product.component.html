@@ -27,8 +27,8 @@
                                            placeholder="Название" >
                                     <label *ngIf="newProductForm.controls['name'].invalid && newProductForm.controls['name'].touched"
                                            class="form-label" for="name" style="margin-left: 10px; color: red">Минимум 3 символа</label>
-                                    <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 70.4px;"></div><div class="form-notch-trailing"></div></div></div>
-
+                                    <div class="form-notch-leading" style="width: 9px;"></div>
+                                   </div>
                             </div>
                             <div class="col-md-6 mb-4">
 
@@ -55,7 +55,6 @@
 
                             </div>
                             <div class="col-md-6 mb-4">
-
                                 <select formControlName="category"
                                         class="form-control form-control-lg" >
                                     <option value="" disabled selected>Выберите категорию</option>
