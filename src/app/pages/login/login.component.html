@@ -10,29 +10,48 @@
 <body>
 <br><br><br><br><br>
 <section class="w-100 p-4 d-flex justify-content-center pb-5">
-    <form style="width: 22rem;">
+    <form
+            style="width: 22rem;"
+            [formGroup]="form"
+            (ngSubmit)="onSubmit()">
         <h1>Авторизация</h1>
         <br><br>
         <!-- Email input -->
         <div data-mdb-input-init="" class="form-outline mb-4" data-mdb-input-initialized="true">
-            <input type="text" id="form2Example1" class="form-control">
-            <label class="form-label" for="form2Example1" style="margin-left: 0px;">Адрес почты</label>
+            <input formControlName="email"
+                   type="email"
+                   id="email"
+                   class="form-control"
+                   placeholder="Адрес почты">
+            <label *ngIf="form.controls['email'].invalid && form.controls['email'].touched"
+                    class="form-label" style="margin-left: 10px;color: red">Некорректаная почта</label>
             <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 88.8px;"></div><div class="form-notch-trailing"></div></div></div>
 
         <!-- Password input -->
         <div data-mdb-input-init="" class="form-outline mb-4" data-mdb-input-initialized="true">
-            <input type="password" id="form2Example2" class="form-control">
-            <label class="form-label" for="form2Example2" style="margin-left: 0px;">Пароль</label>
+            <input formControlName="password"
+                   type="password"
+                   id="form2Example2"
+                   class="form-control"
+                   placeholder="Пароль"
+                   [type] = "showPass ? 'text' : 'password'">
+            <input
+                    type="checkbox"
+                    [(ngModel)]="showPass"
+                    [ngModelOptions]="{standalone: true}"
+                    id="togglePassword"
+                    class="form-check-input">
+            <label for="togglePassword" >Показать пароль</label>
+            <label *ngIf="form.controls['password'].invalid && form.controls['password'].touched"
+                   class="form-label" style="margin-left: 10px;color: red">Короткий пароль</label>
             <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div>
                 <div class="form-notch-middle" style="width: 64.8px;">
-
                 </div><div class="form-notch-trailing"></div></div></div>
 
         <!-- 2 column grid layout for inline styling -->
         <div class="row mb-1">
             <!-- Submit button -->
-            <button type="button" data-mdb-button-init="" data-mdb-ripple-init="" class="btn btn-primary btn-block mb-2" data-mdb-button-initialized="true">Войти</button>
-
+            <button type="submit" data-mdb-button-init="" data-mdb-ripple-init="" class="btn btn-primary btn-block mb-2" data-mdb-button-initialized="true">Войти</button>
             <!-- Register buttons -->
             <div class="text-center">
                 <p>Не зарегистрированы? <a href="register.html">Регистастрация</a></p>

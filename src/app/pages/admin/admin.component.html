@@ -5,16 +5,18 @@
     <title>Панель управления пиццерией</title>
     <link rel="stylesheet" href="admin.component.css" />
     <link rel="shortcut icon" href="/src/assets/images/icon.png" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
+<app-header></app-header>
 <div class="header">
     <h1>Панель Администратора</h1>
     <a href="p" class="home-link">На главную</a>
 </div>
 <main>
-    <section id="products">
+    <section id="products" class="w-100 px-4 py-5 gradient-custom" style="border-radius: .5rem .5rem 0 0;">
         <h1>Продукты</h1>
-        <button id="add-product-button">Добавить продукт</button>
+        <button id="add-product-button" style="margin-left: 10px">Добавить продукт</button>
         <br><br>
         <table id="products-table">
             <thead>
@@ -22,6 +24,7 @@
                 <th>Наименование</th>
                 <th>Описание</th>
                 <th>Цена</th>
+                <th>Категория</th>
                 <th>Изображение</th>
                 <th>Действия</th>
             </tr>
@@ -32,6 +35,7 @@
                 <td>Маргарита</td>
                 <td>Lorem ipsum</td>
                 <td>25 руб</td>
+                <td>Пицца</td>
                 <td><img src="../../../assets/images/margaritta.jpg" alt="Пицца" class="pizza-img"></td>
                 <td>  <button id="edit-product-button">Редактировать продукт</button>
                     <br><br>
@@ -40,9 +44,24 @@
             </tbody>
         </table>
     </section>
-    <section id="categories">
+    <section id="categories" class="w-100 px-4 py-5 gradient-custom" style="border-radius: .5rem .5rem 0 0;">
         <h1>Категории</h1>
-        <button id="add-category-button">Добавить категорию</button>
+        <form
+        [formGroup]="categoryForm"
+        (ngSubmit)="addNewCategory()">
+        <div class="form-outline form-outline-ng" data-mdb-input-initialized="true">
+            <input formControlName="category" type="text"
+                   class="category-input"
+                   placeholder="Новая категория">
+            @if (categoryForm.controls.category.invalid && categoryForm.controls.category.touched){
+            <label class="form-label"
+                   style="margin-left: 10px; color: red">Минимум 3 символа</label>
+            }
+            <div class="form-notch-leading" style="width: 9px;"></div>
+            <br>
+        </div>
+        <button id="add-category-button" style="margin-left: 10px" (click)="addNewCategory()">Добавить категорию</button>
+        </form>
         <br><br>
         <table id="categories-table">
             <thead>
@@ -62,9 +81,10 @@
             </tbody>
         </table>
     </section>
-    <section id="orders">
+    <section id="orders" class="w-100 px-4 py-5 gradient-custom" style="border-radius: .5rem .5rem 0 0;">
         <h1>Заказы</h1>
-        <button id="add-order-button">Добавить заказ</button>
+        <button id="add-order-button" style="margin-left: 10px">Добавить заказ</button>
+        <br><br>
         <table id="orders-table">
             <thead>
             <tr>
@@ -72,14 +92,16 @@
                 <th>Почта</th>
                 <th>Номер телефона</th>
                 <th>Номер заказа</th>
+                <th>Статус</th>
                 <th>Действия</th>
             </tr>
             </thead>
             <tbody>
             <td>Ivanov Ivan</td>
-            <td>ivan@mail.ru</td>
+            <td>ivanmail.ru</td>
             <td>+67872364</td>
             <td>245</td>
+            <td>Выполнен</td>
             <td><button id="edit-order-button">Редактировать заказ</button>
                 <br><br>
                 <button id="delete-order-button">Удалить заказ</button></td>

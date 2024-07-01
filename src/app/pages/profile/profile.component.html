@@ -18,6 +18,7 @@
                     <h5 class="card-title text-center">Информация о пользователе</h5>
                 </div>
                 <div class="card-body">
+                    <div class="table-wrapper">
                     <table>
                         <thead>
                         <tr>
@@ -26,38 +27,135 @@
                         </thead>
                         <tbody>
                         <tr>
-                            <td class="left-col" rowspan="2">
+                            <td class="right-col" rowspan="2">
                                 <img src="../../../assets/images/user.png" alt="" title="" width="150" height="150"></td>
-                            <td class="right-col">
-                                <button class="btn btn-primary" id="edit-photo-btn">Изменить фото</button>
-                            </td>
                         </tr>
                         <tr>
                         </tr>
                         </tbody>
                     </table>
-                    <ul class="list-group">
-                        <li class="list-group-item">
-                            <strong>Имя:</strong>
-                            <input class="form-control" type="text" id="user-name">
-                        </li>
-                        <li class="list-group-item">
-                            <strong>Email:</strong>
-                            <input  class="form-control" type="email" id="user-email">
-                        </li>
-                        <li class="list-group-item">
-                            <strong>Телефон:</strong>
-                            <input class="form-control" type="tel" id="user-phone">
-                        </li>
-                        <li class="list-group-item">
-                            <strong>Пароль:</strong>
-                            <input class="form-control" type="password" id="user-password">
-                            <input type="checkbox" id="togglePassword">
-                            <label for="togglePassword">Показать пароль</label>
-                        </li>
-                        <button class="btn btn-primary mt-3" id="edit-profile-btn">Редактировать профиль</button>
-                        <button class="btn btn-danger mt-3" id="exit-profile-btn">Выход</button>
-                    </ul>
+                    </div>
+                    <section class="w-100 d-flex justify-content-center">
+                        <form
+                                style="width: 15rem;"
+                                [formGroup]="profileForm"
+                                (ngSubmit)="updateUser()">
+                            <!-- Firstname input -->
+                            <div data-mdb-input-init="" class="form-outline mb-4" data-mdb-input-initialized="true">
+                                <label class="form-label" for="firstName" style="margin-left: 0px;">Имя</label>
+                                <input
+                                        formControlName="firstName"
+                                        type="text" id="firstName"
+                                        class="form-control form-control-lg"
+                                        placeholder="Имя"
+                                        [ngClass]="{'is-invalid' : profileForm.controls['firstName'].invalid && profileForm.controls['firstName'].touched}">
+                                <div class="form-notch">
+                                    <div class="form-notch-leading" style="width: 9px;"></div>
+                                    <div class="form-notch-middle" style="width: 70.4px;"></div>
+                                    <div class="form-notch-trailing"></div>
+                                </div>
+                            </div>
+
+                            <!-- Lastname input -->
+                            <div data-mdb-input-init="" class="form-outline mb-4" data-mdb-input-initialized="true">
+                                <label class="form-label" for="lastName" style="margin-left: 0px;">Фамилия</label>
+                                <input
+                                        formControlName="lastName"
+                                        type="text" id="lastName"
+                                        class="form-control form-control-lg"
+                                        placeholder="Фамилия"
+                                        [ngClass]="{'is-invalid' : profileForm.controls['lastName'].invalid && profileForm.controls['lastName'].touched}">
+                                <div class="form-notch">
+                                    <div class="form-notch-leading" style="width: 9px;"></div>
+                                    <div class="form-notch-middle" style="width: 70.4px;"></div>
+                                    <div class="form-notch-trailing"></div>
+                                </div>
+                            </div>
+
+                            <!-- Email input -->
+                            <div data-mdb-input-init="" class="form-outline mb-4" data-mdb-input-initialized="true">
+                                <label class="form-label" for="email" style="margin-left: 0px;">Адрес почты</label>
+                                <input
+                                        formControlName="email"
+                                        type="email" id="email"
+                                        class="form-control form-control-lg"
+                                        placeholder="Адрес почты"
+                                        [ngClass]="{'is-invalid' : profileForm.controls['email'].invalid && profileForm.controls['email'].touched}">
+                                <div class="form-notch">
+                                    <div class="form-notch-leading" style="width: 9px;"></div>
+                                    <div class="form-notch-middle" style="width: 88.8px;"></div>
+                                    <div class="form-notch-trailing"></div>
+                                </div>
+                            </div>
+
+                            <!-- BirthDate input -->
+                            <div data-mdb-input-init="" class="form-outline mb-4" data-mdb-input-initialized="true">
+                                <label class="form-label" for="email" style="margin-left: 0px;">Дата рождения</label>
+                                <input
+                                        formControlName="birthDate"
+                                        type="date" id="birthDate"
+                                        class="form-control form-control-lg"
+                                        placeholder="Дата рождения"
+                                        [ngClass]="{'is-invalid' : profileForm.controls['birthDate'].invalid && profileForm.controls['birthDate'].touched}">
+                                <div class="form-notch">
+                                    <div class="form-notch-leading" style="width: 9px;"></div>
+                                    <div class="form-notch-middle" style="width: 88.8px;"></div>
+                                    <div class="form-notch-trailing"></div>
+                                </div>
+                            </div>
+
+                            <!-- Gender input -->
+                            <div data-mdb-input-init="" class="form-outline mb-4" data-mdb-input-initialized="true">
+                                <label class="form-label" style="margin-left: 0px;">Пол</label>
+                                <select formControlName="gender"
+                                        class="form-control"
+                                        [ngClass]="{'is-invalid' : profileForm.controls['gender'].invalid && profileForm.controls['gender'].touched}">
+                                    <option value="Male">Мужской</option>
+                                    <option value="Female">Женский</option>
+                                    <option value="Another">Другое</option>
+                                </select>
+                                <div class="form-notch">
+                                    <div class="form-notch-leading" style="width: 9px;"></div>
+                                    <div class="form-notch-middle" style="width: 88.8px;"></div>
+                                    <div class="form-notch-trailing"></div>
+                                </div>
+                            </div>
+
+                            <!-- Password input -->
+                            <div data-mdb-input-init="" class="form-outline mb-4" data-mdb-input-initialized="true">
+                                <label class="form-label" for="form2Example2" style="margin-left: 0px;">Пароль</label>
+                                <input
+                                        formControlName="password"
+                                        type="password" id="form2Example2"
+                                        class="form-control form-control-lg"
+                                        placeholder="Пароль"
+                                        [type] = "showPass ? 'text' : 'password'"
+                                        [ngClass]="{'is-invalid' : profileForm.controls['password'].invalid && profileForm.controls['password'].touched}">
+                                <input type="checkbox"
+                                       [(ngModel)]="showPass"
+                                       [ngModelOptions]="{standalone: true}"
+                                       id="togglePassword"
+                                       class="form-check-input"
+                                       style="margin-left: 6px ">
+                                <label for="togglePassword" style="margin-left: 20px">Показать пароль</label>
+                                <div class="form-notch">
+                                    <div class="form-notch-leading" style="width: 9px;"></div>
+                                    <div class="form-notch-middle" style="width: 64.8px;"></div>
+                                    <div class="form-notch-trailing"></div>
+                                </div>
+                            </div>
+
+                            <!-- 2 column grid layout for inline styling -->
+                            <div class="row mb-1">
+                                <!-- Submit button -->
+                                <button type="submit" data-mdb-button-init="" data-mdb-ripple-init="" class="btn btn-primary btn-block mb-2" data-mdb-button-initialized="true">Редактировать профиль</button>
+                            </div>
+                            <div class="row mb-1">
+                                <!-- Exit button -->
+                                <button type="button" (click)="logOut()" class="btn btn-danger btn-block" id="exit-profile-btn">Выход из профиля</button>
+                            </div>
+                        </form>
+                    </section>
                 </div>
             </div>
         </div>
@@ -82,7 +180,5 @@
         </div>
     </div>
 </div>
-
-
 </body>
 </html>
