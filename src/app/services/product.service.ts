@@ -9,20 +9,20 @@ import {Product} from "../data/intefaces/product.interface";
 })
 export class ProductService {
 
-  private aprServerUrl = enviroment.apiBaseUrl;
+  private apiServerUrl = enviroment.apiBaseUrl;
 
   http : HttpClient = inject(HttpClient)
 
   // constructor(private http: HttpClient) { }
 
   public getAllProducts(): Observable<Product[]>{
-    return this.http.get<Product[]>(`${this.aprServerUrl}/api/v1/product`)
+    return this.http.get<Product[]>(`${this.apiServerUrl}/api/v1/product`)
   }
-  //
-  // public addEmployee(employee: Employee): Observable<Employee>{
-  //   return this.http.post<Employee>(`${this.aprServerUrl}/employee/add`,employee)
-  // }
-  //
+
+  public addNewProduct(product: Product): Observable<Product> {
+    return this.http.post<Product>(`${this.apiServerUrl}/api/v1/product`, product);
+  }
+
   // public updateEmployee(employee: Employee): Observable<Employee>{
   //   return this.http.put<Employee>(`${this.aprServerUrl}/employee/update`,employee)
   // }

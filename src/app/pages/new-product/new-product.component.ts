@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
 import {NgIf} from "@angular/common";
 import {HeaderComponent} from "../../common-ui/header/header.component";
 import {Product} from "../../data/intefaces/product.interface";
 import {Category} from "../../data/intefaces/category.interface";
+import {ProductService} from "../../services/product.service";
 
 @Component({
   selector: 'app-new-product',
@@ -17,7 +18,9 @@ import {Category} from "../../data/intefaces/category.interface";
   templateUrl: './new-product.component.html',
   styleUrl: './new-product.component.css'
 })
-export class NewProductComponent {
+export class NewProductComponent implements OnInit{
+
+    productService: ProductService = inject(ProductService)
 
     product!: Product;
 
@@ -38,15 +41,31 @@ export class NewProductComponent {
         category: new FormControl(null, [Validators.required]),
     })
 
+    ngOnInit(): void {
+        this.addNewProduct()
+    }
+
     addNewProduct() {
         if (this.newProductForm.valid) {
             //@ts-ignore
-            this.product = this.newProductForm.value
-            console.log(this.product)
-            alert("Форма успешно заполнена :D");
+            this.product =  this.newProductForm.value;
+            console.log(this.product);
+
+            this.productService.addNewProduct(this.product).subscribe(
+                response => {
+                    console.log('Новый продукт добавлен!', response);
+                    alert("Новый продукт добавлен!");
+                    this.newProductForm.reset();
+                },
+                error => {
+                    console.error('Ошибка при добавлении продукта. Попробуйте снова!', error);
+                    alert("Ошибка при добавлении продукта. Попробуйте снова!");
+                }
+            );
         } else {
-            alert("Форма регистрации заполнена некорректно(");
+            alert("Форма заполнена некорректно!");
             console.log(this.newProductForm.value);
         }
     }
+
 }
